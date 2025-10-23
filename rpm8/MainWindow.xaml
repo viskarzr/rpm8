@@ -1,0 +1,38 @@
+﻿<Window x:Class="rpm8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rpm8"
+        mc:Ignorable="d"
+        Title="Сотрудники" Height="650" Width="600" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="389*"></RowDefinition>
+            <RowDefinition Height="245*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="lbStaff" Margin="10,10,10,10"/>
+        <GroupBox Header=" Работа с данными " Grid.Column="1" Margin="10,10,10,10">
+            <StackPanel>
+                <Label Content="ФИО:" Margin="30,0,0,0"/>
+                <TextBox x:Name="tbFullName" TextWrapping="Wrap"  Width="200"/>
+                <Label Content="Пол:" Margin="30,0,0,0"/>
+                <TextBox x:Name="tbGender" TextWrapping="Wrap"  Width="200"/>
+                <Label Content="Должность:" Margin="30,0,0,0"/>
+                <TextBox x:Name="tbPost" TextWrapping="Wrap"  Width="200"/>
+                <StackPanel Width="218">
+                    <Label Content="Стаж работы:"/>
+                    <TextBox x:Name="tbExp" TextWrapping="Wrap"  Width="200"/>
+                    <Label Content="Оклад:"/>
+                    <TextBox x:Name="tbSalary" TextWrapping="Wrap"  Width="200"/>
+                </StackPanel>
+                <Button x:Name="btnChange" Content="Изменить" Margin="0,20,0,0" Width="200"/>
+                <Button x:Name="btnDelete" Content="Удалить" Margin="0,10,0,0" Width="200"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
