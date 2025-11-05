@@ -19,6 +19,7 @@ namespace rpm8
         public MainWindow()
         {
             InitializeComponent();
+            InitializeStaff();
         }
 
         struct Staff
@@ -47,11 +48,24 @@ namespace rpm8
 
         Staff[] staff;
 
+        //private void InitializeStaff()
+        //{
+        //    staff = new Staff[7]
+        //    {
+        //        new Staff(0, "Иванов Иван Иванович", "Муж", "Директор", 15.5, 150000),
+        //        new Staff(1, "Петрова Анна Сергеевна", "Жен", "Бухгалтер", 8.2, 80000),
+        //        new Staff(2, "Сидоров Петр Михайлович", "Муж", "Программист", 5.0, 120000),
+        //        new Staff(3, "Кузнецова Ольга Владимировна", "Жен", "Менеджер", 3.5, 60000),
+        //        new Staff(4, "Васильев Алексей Дмитриевич", "Муж", "Аналитик", 7.8, 95000),
+        //        new Staff(5, "Николаева Екатерина Павловна", "Жен", "Дизайнер", 4.3, 75000),
+        //        new Staff(6, "Морозов Денис Игоревич", "Муж", "Тестировщик", 2.7, 50000)
+        //    };
+        //}
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
             lbStaff.ItemsSource = null;
             int pos = Convert.ToInt32(tbCode.Text);
-            //staff[pos].Code = Convert.ToInt32(tbCode.Text); не работает
+            staff[pos].Code = Convert.ToInt32(tbCode.Text); 
             staff[pos].Name = tbFullName.Text;
             staff[pos].Gender = tbGender.Text;
             staff[pos].Post = tbPost.Text;
