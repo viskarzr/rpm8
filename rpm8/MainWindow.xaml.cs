@@ -20,6 +20,7 @@ namespace rpm8
         {
             InitializeComponent();
             InitializeStaff();
+            ShowStaff();
         }
 
         struct Staff
@@ -42,37 +43,67 @@ namespace rpm8
             }
             public override string ToString()
             {
-                return $"ФИО:{Name,40}, Пол:{Gender,7}, Должность:{Post,45}, Стаж работы:{Exp,50:F1} лет, Оклад:{Salary,7:F2}.";
+                return $"Код:{Code} - ФИО:{Name,40}, Пол:{Gender,7}, Должность:{Post,45}, Стаж работы:{Exp,50:F1} лет, Оклад:{Salary,7:F2}.";
             }
         }
 
-        Staff[] staff;
+        Staff[] staff1;
 
-        //private void InitializeStaff()
-        //{
-        //    staff = new Staff[7]
-        //    {
-        //        new Staff(0, "Иванов Иван Иванович", "Муж", "Директор", 15.5, 150000),
-        //        new Staff(1, "Петрова Анна Сергеевна", "Жен", "Бухгалтер", 8.2, 80000),
-        //        new Staff(2, "Сидоров Петр Михайлович", "Муж", "Программист", 5.0, 120000),
-        //        new Staff(3, "Кузнецова Ольга Владимировна", "Жен", "Менеджер", 3.5, 60000),
-        //        new Staff(4, "Васильев Алексей Дмитриевич", "Муж", "Аналитик", 7.8, 95000),
-        //        new Staff(5, "Николаева Екатерина Павловна", "Жен", "Дизайнер", 4.3, 75000),
-        //        new Staff(6, "Морозов Денис Игоревич", "Муж", "Тестировщик", 2.7, 50000)
-        //    };
-        //}
+        private void InitializeStaff()
+        {
+            staff1 = new Staff[7]
+            {
+                new Staff(0, "", "", "", 0, 0),
+                new Staff(1, "", "", "", 0, 0),
+                new Staff(2, "", "", "", 0, 0),
+                new Staff(3, "", "", "", 0, 0),
+                new Staff(4, "", "", "", 0, 0),
+                new Staff(5, "", "", "", 0, 0),
+                new Staff(6, "", "", "", 0, 0)
+            };
+        }
+        private void ShowStaff()
+        {
+            lbStaff.ItemsSource = staff1;
+        }
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
             lbStaff.ItemsSource = null;
             int pos = Convert.ToInt32(tbCode.Text);
-            staff[pos].Code = Convert.ToInt32(tbCode.Text); 
-            staff[pos].Name = tbFullName.Text;
-            staff[pos].Gender = tbGender.Text;
-            staff[pos].Post = tbPost.Text;
-            staff[pos].Exp = Convert.ToDouble(tbExp.Text);
-            staff[pos].Salary = Convert.ToDouble(tbSalary.Text);
-            lbStaff.ItemsSource = staff;
+            staff1[pos].Code = Convert.ToInt32(tbCode.Text); 
+            staff1[pos].Name = tbFullName.Text;
+            staff1[pos].Gender = tbGender.Text;
+            staff1[pos].Post = tbPost.Text;
+            staff1[pos].Exp = Convert.ToDouble(tbExp.Text);
+            staff1[pos].Salary = Convert.ToDouble(tbSalary.Text);
+            lbStaff.ItemsSource = staff1;
 
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();   
+        }
+
+        private void btnAbout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Практическая работа №8\r\nРабота с типом данных структура.\r\nЗаполнить таблицу со списком сотрудников на 7 человек с полями: ФИО, пол, \r\nдолжность, стаж работы, оклад. Вывести результат на экран.\r\nВывести средний оклад.\r\nВыполнила:\r\nСтудентка гр.ИСП-31\r\nКирюшова В.");
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCalc_Click(object sender, RoutedEventArgs e)
+        {
+            double sal = 0;
+            for (int i = 0; i<7; i++)
+            {
+                sal += staff1[i].Salary;
+            }
+            tbSal.Text = sal.ToString();
+            
         }
     }
 }
