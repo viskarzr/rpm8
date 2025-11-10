@@ -92,16 +92,44 @@ namespace rpm8
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (int.TryParse(tbCode.Text, out int pos) && pos >= 0 && pos < staff1.Length)
+            {
+                // Reset the staff member at the specified position
+                staff1[pos] = new Staff(pos, "", "", "", 0, 0);
 
+                // Refresh the display
+                lbStaff.ItemsSource = null;
+                lbStaff.ItemsSource = staff1;
+
+                // Clear input fields
+                ClearInputFields();
+            }
+            else
+            {
+                MessageBox.Show("Введите корректный код сотрудника");
+            }
+        }
+
+        private void ClearInputFields()
+        {
+            tbCode.Text = "";
+            tbFullName.Text = "";
+            tbGender.Text = "";
+            tbPost.Text = "";
+            tbExp.Text = "";
+            tbSalary.Text = "";
         }
 
         private void btnCalc_Click(object sender, RoutedEventArgs e)
         {
             double sal = 0;
+            int count = 0;
             for (int i = 0; i<7; i++)
             {
-                sal += staff1[i].Salary;
+                sal += staff1[i].Salary;      
+                count++;
             }
+            sal = sal / count;
             tbSal.Text = sal.ToString();
             
         }
