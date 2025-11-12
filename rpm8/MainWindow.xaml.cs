@@ -132,7 +132,7 @@ namespace rpm8
                 staff1[pos] = new Staff(pos, "", "", "", 0, 0);
                 lbStaff.ItemsSource = null;
                 lbStaff.ItemsSource = staff1;
-                ClearInputFields();
+                ClearAll();
             }
             else
             {
@@ -143,7 +143,7 @@ namespace rpm8
         /// <summary>
         /// Метод очистки полей листбокса
         /// </summary>
-        private void ClearInputFields()
+        private void ClearAll()
         {
             tbCode.Clear();
             tbFullName.Clear();
